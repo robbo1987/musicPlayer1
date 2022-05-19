@@ -1,17 +1,9 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="hHh lpR fFf">
     <q-header elevated>
       <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="leftDrawerOpen = !leftDrawerOpen"
-        />
 
-        <q-toolbar-title> Robbys ToDo App </q-toolbar-title>
+        <q-toolbar-title class="absolute-center"> Robbys ToDo App </q-toolbar-title>
       </q-toolbar>
     </q-header>
 
@@ -30,13 +22,14 @@
     <q-drawer
       v-model="leftDrawerOpen"
       :breakpoint='767'
+      :width="225"
       show-if-above
       bordered
-      content-class="bg-grey-1"
+      content-class="bg-primary"
     >
-      <q-list>
-        <q-item-label header class="text-grey-8">Navigation</q-item-label>
-        <q-item v-for="nav in navs" :key="nav.id" :to="nav.to" exact clickable>
+      <q-list dark>
+        <q-item-label header>Navigation</q-item-label>
+        <q-item v-for="nav in navs" :key="nav.id" :to="nav.to" class="text-grey-4" exact clickable>
           <q-item-section avatar>
             <q-icon :name="nav.icon" />
           </q-item-section>
@@ -75,10 +68,15 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style lang='scss'scoped>
 @media screen and (min-width: 768px) {
   .q-footer {
     display:none
+  }
+}
+.q-drawer {
+  .q-router-link--exact-active {
+    color: white !important;
   }
 }
 </style>
