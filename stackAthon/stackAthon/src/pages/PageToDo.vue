@@ -1,6 +1,6 @@
 <template>
   <q-page padding> 
-    <p> ToDo page </p>
+    <p> To Do page </p>
 
   </q-page>
 </template>
