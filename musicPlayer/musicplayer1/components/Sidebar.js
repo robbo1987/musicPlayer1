@@ -66,17 +66,13 @@ function Sidebar() {
        </button>
         <hr className="border-t-[1.1px] border-gray-900" />   
 
-        <p className="cursor-pointer hover:text-white"> Sample name...</p>
-        <p className="cursor-pointer hover:text-white"> Sample name...</p>
-        <p className="cursor-pointer hover:text-white"> Sample name...</p>
-        <p className="cursor-pointer hover:text-white"> Sample name...</p>
-        <p className="cursor-pointer hover:text-white"> Sample name...</p>
-        <p className="cursor-pointer hover:text-white"> Sample name...</p>
-        <p className="cursor-pointer hover:text-white"> Sample name...</p>
-        <p className="cursor-pointer hover:text-white"> Sample name...</p>
-        <p className="cursor-pointer hover:text-white"> Sample name...</p>
-        <p className="cursor-pointer hover:text-white"> Sample name...</p>
-        v
+        <p className="cursor-pointer hover:text-white"> Techno Samples...</p>
+        <p className="cursor-pointer hover:text-white"> Hip Hop Samples...</p>
+        <p className="cursor-pointer hover:text-white"> Rock Samples...</p>
+        <p className="cursor-pointer hover:text-white"> Reaggae Samples...</p>
+        <p className="cursor-pointer hover:text-white"> Country Samples...</p>
+        <p className="cursor-pointer hover:text-white"> Pop Samples...</p>
+        
         </div>
     </div>
   );
