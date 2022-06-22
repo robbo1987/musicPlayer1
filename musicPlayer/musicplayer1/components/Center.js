@@ -2,6 +2,9 @@ import { useEffect, useState } from "react"
 import {shuffle} from "lodash"
 import { useSession } from "next-auth/react"
 import { ChevronDownIcon } from "@heroicons/react/outline"
+import { useRecoilState, useRecoilValue } from "recoil";
+import {playlistIdState, playlistState} from "../atoms/playlistAtom"
+import useSpotify from "../hooks/useSpotify";
 
 
   const colors = [
@@ -16,11 +19,24 @@ function Center() {
 
   const { data: session } = useSession()
   const [color,setColor] = useState(null)
+  const spotifyApi = useSpotify()
+  const playlistId = useRecoilValue(playlistIdState)
+  const [playlist,setPlaylist] = useRecoilState(playlistState)
 
   useEffect(() => {
     setColor(shuffle(colors).pop())
 
-  },[])
+  },[playlistId])
+
+  useEffect(() => {
+    spotifyApi.getPlaylist(playlistId).then((data)=> {
+      setPlaylist(data.body)
+    })
+    .catch(error=> console.log("something wentg wrong",error))
+
+  }, [spotifyApi, playlistId])
+
+  console.log(playlist)
 
   return (
     <div className="flex-grow text-white ">
@@ -35,6 +51,9 @@ function Center() {
           </div>
         </header>
         <section className= {`flex items-end space-x-7 bg-gradient-to-b to-black ${color} h-80 text-white padding-8`}>
+          <img src={playlist?.images?.[0].url}
+          className="h-44 w-44 shadow-2xl"
+          alt="" />
         </section>
     </div>
   )
