@@ -7,7 +7,7 @@ import Player from "../components/Player"
 
 const Home = () => {
   return (
-    <div className="bg-black h-screen overflow-hidden">
+    <div className="h-screen overflow-hidden bg-red-400">
       <Head>
         <title>Music Player</title>
         <link rel="icon" href="/favicon.ico" />

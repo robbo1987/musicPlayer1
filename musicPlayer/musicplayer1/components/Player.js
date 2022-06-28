@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
@@ -14,6 +14,8 @@ import {
   VolumeUpIcon,
 } from "@heroicons/react/outline";
 import { RewindIcon } from "@heroicons/react/solid";
+import {debounce} from "lodash"
+
 
 const Player = () => {
   const spotifyApi = useSpotify();
@@ -54,6 +56,19 @@ const Player = () => {
       setVolume(50);
     }
   }, [currentTrackIdState, spotifyApi, session]);
+
+  useEffect(() => {
+    if(volume > 0 && volume < 100) {
+      debouncedAdjustVolume(volume)
+    }
+  }, [volume])
+
+  const debouncedAdjustVolume = useCallback(
+    debounce((volume) => {
+      spotifyApi.setVolume(volume).catch((err)=> (console.log(err)))
+
+    },500),[]
+  );
 
   return (
     <div
@@ -115,3 +130,5 @@ const Player = () => {
 };
 
 export default Player;
+
+//pull up track object, look for songwriter credits
